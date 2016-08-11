@@ -39,7 +39,7 @@ drop.get("/") { request in
     return try drop.view("welcome.html")
 }
 
-drop.any("hello") { request in
+drop.get("hello") { request in
     guard let name = request.data["name"].string else {
         throw Abort.badRequest
     }
