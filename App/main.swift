@@ -39,6 +39,14 @@ drop.get("/") { request in
     return try drop.view("welcome.html")
 }
 
+drop.any("hello") { request in
+    guard let name = request.data["name"].string else {
+        throw Abort.badRequest
+    }
+
+    return "Hello, \(name)!"
+}
+
 /**
     Return JSON requests easy by wrapping
     any JSON data type (String, Int, Dict, etc)
